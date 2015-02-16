@@ -13,6 +13,5 @@ angular.module('jstestApp')
     MenuService.get('/data/menu.json').success(function(data) {
 	  $scope.menu = data;
 	});
-
   }
 ]);

@@ -1,0 +1,17 @@
+<div class="meal-card">
+    <span class="price button">£{{meal.price}}</span>
+    <img class="image" ng-src="{{meal.primaryImageUrl}}">
+    <div class="name">{{meal.name}}</div>
+    <div class="description">{{meal.description | resumeText:'.'}}
+        <div class="seemore">
+            <div class="bullet"></div>
+            <div class="bullet"></div>
+            <div class="bullet"></div>
+        </div>
+    </div>
+    <add-order-button id="{{meal.id}}" type="{{meal.tags | getDishType}}" name="{{meal.name}}" price="{{meal.price}}"></add-order-button>
+    <div class="optionsavailable">
+        <!-- meal.tags does not provide enough information to fill this field -->
+        3 options available
+    </div>
+</div>

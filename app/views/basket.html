@@ -1,0 +1,25 @@
+<div class="basket-items" ng-class="{hideFullBasket: $root.hideFullBasket}">
+    <h4 class="basket-title">Your Order</h4>
+    <h5 class="basket-sub-title">A delicious restaurant</h5>
+    <div class="basket-mains" ng-if="$root.main.length > 0">
+        <div class="main-title">{{$root.main.length}} main{{$root.main.length > 1 ? 's' : ''}}</div>
+        <ul class="main-content">
+            <li class="main-item" ng-repeat="main in basketCtrl.getMealInfo($root.main)">
+                <basket-item amount="{{main.amount}}" name="{{main.name}}" price="{{main.price}}"></basket-item>
+            </li>
+        </ul>
+    </div>
+    <div class="others" ng-if="$root.others.length > 0">
+        <div class="others-title">{{$root.others.length}} other{{$root.others.length > 1 ? 's' : ''}}</div>
+        <ul class="others-content">
+            <li class="other-item" ng-repeat="other in basketCtrl.getMealInfo($root.others)">
+                <basket-item amount="{{other.amount}}" name="{{other.name}}" price="{{other.price}}"></basket-item>
+            </li>
+        </ul>
+    </div>
+    <div class="basket-footer">
+        <button class="confirm" ng-click="confirm($event)">Confirm your order</button>
+        <div class="totalprice-basket">£{{$root.totalprice}}</div>
+    </div>
+</div>
+

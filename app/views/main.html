@@ -1,8 +1,13 @@
+<div class="basket-wrapper">
+    <basket></basket>
+</div>
+<basket-header></basket-header>
+
+<h3 class="title">
+    Your Delicious Restaurant
+</h3>
 <ul class="meals">
     <li class="meal" ng-repeat="meal in menu.meals">
-        <h4 class="name">{{meal.name}}</h4>
-        <img class="image" ng-src="{{meal.primaryImageUrl}}">
-        <p class="description">{{meal.description}}</p>
-        <p class="price">{{meal.price}}</p>
+        <meal-card meal="meal"></meal-card>
     </li>
 </ul>

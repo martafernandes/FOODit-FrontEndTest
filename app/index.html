@@ -22,9 +22,8 @@
     <!-- Add your site or application content here -->
     <div class="container">
       <div class="header">
-        <h3 class="text-muted">Menu</h3>
+        <!--<h3 class="text-muted">Menu</h3>-->
       </div>
-
       <div ng-view=""></div>
 
       <div class="footer">
@@ -53,8 +52,24 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <!-- controllers -->
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/basket-ctrl.js"></script>
+        <script src="scripts/controllers/basket-header-ctrl.js"></script>
+        <script src="scripts/controllers/add-order-button-ctrl.js"></script>
+        <!-- services -->
         <script src="scripts/services/menuservice.js"></script>
+        <!-- directives -->
+        <script src="scripts/directives/add-order-button-directive.js"></script>
+        <script src="scripts/directives/meal-card-directive.js"></script>
+        <script src="scripts/directives/basket-directive.js"></script>
+        <script src="scripts/directives/basket-item-directive.js"></script>
+        <script src="scripts/directives/basket-header-directive.js"></script>
+        <!-- filters -->
+        <script src="scripts/filters/resume-text-filter.js"></script>
+        <script src="scripts/filters/get-dish-type-filter.js"></script>
+
+
         <!-- endbuild -->
 </body>
 </html>
