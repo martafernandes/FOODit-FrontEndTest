@@ -3,8 +3,8 @@
         It's time to order some delicious food
    </div>
    <div class="basket-content" ng-class="{hideBasket: !$root.hasBasketContent && $root.showFullBasket}">
-       <span ng-if="$root.main.length > 0" class="basket-span main">{{$root.main.length}} main</span>
-       <span ng-if="$root.others.length > 0" class="basket-span others">{{$root.others.length}} others</span>
+       <span ng-if="$root.main.length > 0" class="basket-span main">{{getNumberOfMeals($root.main)}} main</span>
+       <span ng-if="$root.others.length > 0" class="basket-span others">{{getNumberOfMeals($root.others)}} others</span>
        <span ng-if="$root.totalprice > 0" class="basket-span totalprice">£{{$root.totalprice}}</span>
    </div>
 </div>

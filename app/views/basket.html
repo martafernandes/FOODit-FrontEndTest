@@ -1,8 +1,8 @@
-<div class="basket-items" ng-class="{hideFullBasket: $root.hideFullBasket}">
+<div class="basket-items" ng-class="{hideFullBasket: $root.hideFullBasket, animate: !$root.hideFullBasket}">
     <h4 class="basket-title">Your Order</h4>
     <h5 class="basket-sub-title">A delicious restaurant</h5>
     <div class="basket-mains" ng-if="$root.main.length > 0">
-        <div class="main-title">{{$root.main.length}} main{{$root.main.length > 1 ? 's' : ''}}</div>
+        <div class="main-title">{{getNumberOfMeals($root.main)}} main{{$root.main.length > 1 ? 's' : ''}}</div>
         <ul class="main-content">
             <li class="main-item" ng-repeat="main in basketCtrl.getMealInfo($root.main)">
                 <basket-item amount="{{main.amount}}" name="{{main.name}}" price="{{main.price}}"></basket-item>
@@ -10,7 +10,7 @@
         </ul>
     </div>
     <div class="others" ng-if="$root.others.length > 0">
-        <div class="others-title">{{$root.others.length}} other{{$root.others.length > 1 ? 's' : ''}}</div>
+        <div class="others-title">{{getNumberOfMeals($root.others)}} other{{$root.others.length > 1 ? 's' : ''}}</div>
         <ul class="others-content">
             <li class="other-item" ng-repeat="other in basketCtrl.getMealInfo($root.others)">
                 <basket-item amount="{{other.amount}}" name="{{other.name}}" price="{{other.price}}"></basket-item>

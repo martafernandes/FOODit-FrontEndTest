@@ -3,14 +3,23 @@ angular.module('jstestApp')
         function ($scope, $rootScope, $window) {
             'use strict';
 
-            this.getPosition = function (meals, id) {
-                var position = -1;
+            this.updateMealInfo = function (meals, id, currentOrder) {
+                var idExists = false;
 
                 angular.forEach(meals, function (item) {
-                    if (Object.keys(item)[0] === id) {
-                        position++;
+                    var key =  Object.keys(item)[0];
+
+                    // updates the amount if the order is already added to the basket
+                    if (key === id && !idExists) {
+                        item[key].amount++;
+                        idExists = true;
                     }
                 });
+
+                // if it's a new order
+                if (!idExists) {
+                    meals.push(currentOrder);
+                }
             };
 
             this.addItemtoBasket = function (id, price, name, type) {
@@ -24,41 +33,24 @@ angular.module('jstestApp')
                         type: type,
                         amount: 1
                     },
-                    currentOrder = {},
-                    indexPosition,
-                    currentElement;
+                    currentOrder = {};
 
                 currentOrder[id] = currentOrderData;
 
                 // filter by type
                 if (type === 'main') {
-                    indexPosition = Object.keys(orders.main).indexOf(id);
-                    // increment the meal amount if it was already added
-                    if (indexPosition >= 0) {
-                        currentElement = orders.main[indexPosition];
-                        orders.main[currentElement].amount++;
-                    } else {
-                        orders.main.push(currentOrder);
-                    }
-
-                   // $rootScope.main++;
+                    this.updateMealInfo(orders.main, id, currentOrder);
                 } else {
-                    indexPosition = Object.keys(orders.others).indexOf(id);
-                    if (indexPosition >= 0) {
-                        currentElement = orders.others[indexPosition];
-                        orders.others[currentElement].position++;
-                    } else {
-                        orders.others.push(currentOrder);
-                    }
-
-                   // $rootScope.others++;
+                    this.updateMealInfo(orders.others, id, currentOrder);
                 }
                 //update total price
                 $rootScope.totalprice += Number(price);
                 orders.totalprice = $rootScope.totalprice;
 
-                // store data in sessionStorage
+                // store data in sessionStorage and update rootscope
                 $window.sessionStorage.setItem('basketData', JSON.stringify(orders));
+                $rootScope.main = orders.main;
+                $rootScope.others = orders.others;
 
                 $rootScope.hasBasketContent = true;
 
