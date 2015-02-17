@@ -2,7 +2,7 @@ angular.module('jstestApp').directive('mealCard', function () {
     'use strict';
     return {
         restrict: 'E',
-        replace: false,
+        replace: true,
         scope: {
             meal: '='
         },

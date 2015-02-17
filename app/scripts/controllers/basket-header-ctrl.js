@@ -1,6 +1,6 @@
 angular.module('jstestApp')
     .controller('basketHeaderCtrl', ['$scope', '$rootScope', '$window',
-        function ($scope, $rootScope,$window) {
+        function ($scope, $rootScope, $window) {
             'use strict';
 
             var sessionStorageData = JSON.parse($window.sessionStorage.getItem('basketData'));

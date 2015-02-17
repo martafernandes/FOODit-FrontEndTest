@@ -1,4 +1,4 @@
-angular.module('jstestApp').directive('basket', function () {
+angular.module('jstestApp').directive('basket', function ($rootScope) {
     'use strict';
     return {
         restrict: 'E',
@@ -14,6 +14,13 @@ angular.module('jstestApp').directive('basket', function () {
                 event.stopPropagation();
 
                 ctrl.resetData();
+            };
+
+            $scope.hideBasket = function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                $rootScope.hideFullBasket = true;
             };
         }
     };

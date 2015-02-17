@@ -28,7 +28,8 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'app/scripts/**/*.js',
 //      'test/mock/**/*.js',
-      'test/spec/**/*.js'
+      'test/spec/**/*.js',
+      'app/views/**/*.html'
     ],
 
     // list of files / patterns to exclude
@@ -59,7 +60,8 @@ module.exports = function(config) {
 	  // source files, that you wanna generate coverage for
 	  // do not include tests or libraries
 	  // (these files will be instrumented by Istanbul)
-	  'app/**/*.js': ['coverage']
+	  'app/**/*.js': ['coverage'],
+      'app/views/*.html': ['html2js']
 	},
 
 	// Continuous Integration mode

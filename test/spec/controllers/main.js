@@ -6,8 +6,16 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('jstestApp'));
 
   var MainCtrl,
-	scope,
-	MenuService;
+	  scope,
+	  MenuService,
+      meals = [
+          {
+           'a' : {amount: 5}
+          },
+          {
+            'b' : {amount: 2}
+          }
+      ];
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, $injector) {
@@ -26,6 +34,10 @@ describe('Controller: MainCtrl', function () {
   it('should call the menu service to retrieve a list of meals', function () {
 	expect(MenuService.get).toHaveBeenCalled();
 	expect(scope.menu.resultCount).toBe(1);
+  });
+
+  it('should return the amount of meals', function () {
+    expect(scope.getNumberOfMeals(meals)).toBe(7);
   });
 
 });

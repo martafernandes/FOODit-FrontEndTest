@@ -1,7 +1,9 @@
 {
   "name": "jstest",
   "version": "0.1.0",
-  "dependencies": {},
+  "dependencies": {
+    "karma-html2js-preprocessor": "^0.1.0"
+  },
   "devDependencies": {
     "grunt": "0.4.2",
     "grunt-autoprefixer": "0.7.3",
@@ -37,7 +39,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-	"postinstall": "node_modules/.bin/bower install",
-	"test": "grunt test"
+    "postinstall": "node_modules/.bin/bower install",
+    "test": "grunt test"
   }
 }

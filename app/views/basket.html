@@ -1,4 +1,4 @@
-<div class="basket-items" ng-class="{hideFullBasket: $root.hideFullBasket, animate: !$root.hideFullBasket}">
+<div class="basket-items" ng-class="{hideFullBasket: $root.hideFullBasket, animate: !$root.hideFullBasket}" ng-click="hideBasket($event)">
     <h4 class="basket-title">Your Order</h4>
     <h5 class="basket-sub-title">A delicious restaurant</h5>
     <div class="basket-mains" ng-if="$root.main.length > 0">
@@ -17,9 +17,12 @@
             </li>
         </ul>
     </div>
-    <div class="basket-footer">
+    <div class="basket-footer" ng-if="$root.others.length > 0 && $root.main.length > 0">
         <button class="confirm" ng-click="confirm($event)">Confirm your order</button>
         <div class="totalprice-basket">£{{$root.totalprice}}</div>
+    </div>
+    <div class="emptybasket" ng-if="$root.others.length === 0 && $root.main.length === 0">
+        There are no items in your order!
     </div>
 </div>
 
